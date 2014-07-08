@@ -5,11 +5,8 @@ cpgcopy is a Cython implementation of pgcopy_,
 small system for very fast bulk insertion of data into a
 PostgreSQL database table using `binary copy`_.
 
-Installation
--------------
-
 Requirements
-"""""""""""""
+-------------
 * pytz_
 * psycopg2_
 * Cython_
