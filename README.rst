@@ -1,7 +1,7 @@
 cpgcopy
 =================
 
-cpgcopy is a Cython implementation of pgcopy_, 
+cpgcopy is a Cython implementation of pgcopy_, a
 small system for very fast bulk insertion of data into a
 PostgreSQL database table using `binary copy`_.
 
