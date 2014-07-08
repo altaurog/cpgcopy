@@ -1,0 +1,13 @@
+syntax:glob
+*.tmp
+*.html
+*.pyc
+*.egg-info/*
+*.c
+*.so
+*.dat
+
+syntax:regexp
+^build/
+^dist/
+^django-shoogie-
