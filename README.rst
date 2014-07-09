@@ -14,6 +14,11 @@ Requirements
 * pandas_
 * pgcopy_
 
+cpgcopy can be built on recent linux
+systems (glibc version 2.9 or higher).
+No information is available regarding
+its use on other platforms.
+
 nose_ is required to run the tests.
 
 Basic use

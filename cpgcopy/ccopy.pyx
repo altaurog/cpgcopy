@@ -1,6 +1,5 @@
 cimport cython
 cimport numpy as np
-from posix.unistd cimport write
 from libc.stdlib cimport malloc, free
 from libc.stdio cimport FILE, fdopen, fwrite, fflush
 
@@ -113,9 +112,7 @@ cdef class CopyManager:
 
     def writestream(self, data, fd):
         a = self.prepare_data(data)
-        write(fd, BINCOPY_HEADER, 19)
         self.write_data(fd, a)
-        write(fd, BINCOPY_TRAILER, 2)
 
     def prepare_data(self, df):
         self.compile()
@@ -137,12 +134,15 @@ cdef class CopyManager:
         return pd.DataFrame(df_spec).to_records(False).astype(self.data_dtype)
 
     def write_data(self, fd, a):
-        self._write_data(fd, a)
+        cdef FILE* outs = fdopen(fd, 'wb')
+        fwrite(BINCOPY_HEADER, 19, 1, outs)
+        self._write_data(outs, a)
+        fwrite(BINCOPY_TRAILER, 2, 1, outs)
+        fflush(outs)
 
     @cython.boundscheck(False)
     @cython.wraparound(False)
-    cdef _write_data(self, int fd, np.ndarray records):
-        cdef FILE* outs = fdopen(fd, 'wb')
+    cdef _write_data(self, FILE* outs, np.ndarray records):
         cdef Py_ssize_t i, row_count = len(records)
         cdef Py_ssize_t j, field_count = len(self.cols)
         cdef uint16_t itemsize = records.itemsize
@@ -169,7 +169,6 @@ cdef class CopyManager:
                     fwrite(&befsize, 4, 1, outs)
                     fwrite(fptr, fsize, 1, outs)
                 data += itemsize
-            fflush(outs)
 
     def __dealloc__(self):
         free(self.field)
