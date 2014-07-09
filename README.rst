@@ -38,8 +38,8 @@ For example::
     from cpgcopy import CopyManager
     cols = ('a', 'b', 'c')
     df = pd.DataFrame(np.random.randn(500, 3), columns=cols)
-    conn = psycopg2.connect(database='weather')
-    mgr = CopyManager(conn, 'measurements', cols)
+    conn = psycopg2.connect(database='weather_db')
+    mgr = CopyManager(conn, 'measurements_table', cols)
     mgr.copy(df)
 
 Supported datatypes
