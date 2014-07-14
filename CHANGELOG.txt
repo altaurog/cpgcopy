@@ -1,5 +1,10 @@
 Changelog
 -----------
+0.4
+"""
+:date: 14 Jul, 2014
+
+*  Replace POSIX write calls withs stdio fwrite
 
 0.3
 """
