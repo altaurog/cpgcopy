@@ -1,6 +1,8 @@
+from distutils.extension import Extension
 from os.path import join, dirname
 from setuptools import setup
 from Cython.Build import cythonize
+import numpy
 
 package_name = "cpgcopy"
 base_dir = dirname(__file__)
@@ -21,6 +23,9 @@ def get_version(package_name, default='0.1'):
     exec f in scope
     return scope.get('__version__', default)
 
+numpy_include = numpy.get_include()
+extensions = [Extension(package_name, ["%s/*.pyx" % package_name],
+                        include_dirs=[numpy_include])]
 setup(
     name = package_name,
     version = get_version(package_name),
@@ -31,8 +36,8 @@ setup(
     license = 'MIT',
     url = "http://bitbucket.org/altaurog/cpgcopy",
     packages = [package_name],
-    ext_modules = cythonize("%s/*.pyx" % package_name),
-    install_requires = ["psycopg2", "numpy", "pandas", "pgcopy"],
+    ext_modules = cythonize(extensions),
+    install_requires = ["psycopg2", "pandas", "pgcopy"],
     classifiers = [
         "Programming Language :: Python",
         "Development Status :: 4 - Beta",
