@@ -7,10 +7,13 @@ PostgreSQL database table using `binary copy`_.
 
 Requirements
 -------------
+Cython_ and numpy_ must be installed to build the package.
+(Help distributing sources without Cython dependency would
+be greatly appreciated.)
+Additional run-time dependencies are:
+
 * pytz_
 * psycopg2_
-* Cython_
-* numpy_
 * pandas_
 * pgcopy_
 
