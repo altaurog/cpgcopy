@@ -5,6 +5,11 @@ cpgcopy is a Cython implementation of pgcopy_, a
 small system for very fast bulk insertion of data into a
 PostgreSQL database table using `binary copy`_.
 
+cpgcopy is somewhat faster than pgcopy.  In reality, network bandwith and
+other system limitations are much more likely to be your rate-limiting
+factor.  In retrospect, I learned a nice bit about cython with this
+project, but ultimately found it a misplaced optimization effort.
+
 Requirements
 -------------
 Cython_ and numpy_ must be installed to build the package.
@@ -75,7 +80,6 @@ available with cpgcopy::
               ExecuteManyBenchmark:   7.86s
     ----------------------------------------------------------------------
     Ran 2 tests in 9.085s
-
 
 
 .. _binary copy: http://www.postgresql.org/docs/9.3/static/sql-copy.html
