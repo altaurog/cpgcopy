@@ -86,7 +86,7 @@ available with cpgcopy::
 .. _psycopg2: https://pypi.python.org/pypi/psycopg2/
 .. _pytz: https://pypi.python.org/pypi/pytz/
 .. _nose: https://pypi.python.org/pypi/nose/
-.. _pgcopy: https://bitbucket.org/altaurog/pgcopy
+.. _pgcopy: https://github.com/altaurog/pgcopy
 .. _Cython: https://pypi.python.org/pypi/Cython
 .. _numpy: https://pypi.python.org/pypi/numpy
 .. _pandas: https://pypi.python.org/pypi/pandas
