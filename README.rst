@@ -5,7 +5,7 @@ cpgcopy is a Cython implementation of pgcopy_, a
 small system for very fast bulk insertion of data into a
 PostgreSQL database table using `binary copy`_.
 
-cpgcopy is somewhat faster than pgcopy.  In reality, network bandwith and
+cpgcopy is about twice as fast as pgcopy.  Network bandwith and
 other system limitations are much more likely to be your rate-limiting
 factor.  In retrospect, I learned a nice bit about cython with this
 project, but ultimately found it a misplaced optimization effort.
